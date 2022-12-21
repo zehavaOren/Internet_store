@@ -21,15 +21,18 @@ namespace DataRepository
 
 
 
-        public async Task<Product[]> Get(int[]? categoryId, string? description, int? priceFrom, int? priceTo, int? start, int? limit, string? orderBy = "name", string? direction = "desc")
+        public async Task<Product[]> Get(int[]? categoryId, string? name, int? priceFrom, int? priceTo, int? start, int? limit, string? orderBy = "name", string? direction = "desc")
 
         {
-            /*var list = (from User in _dbContext.Users
-                        where User.Password == PASSWORD && User.Email == EMAIL
-                        select User).ToArray<User>();
-            Console.WriteLine(list);
-            return list.FirstOrDefault();*/
-            return null;
+            var qurey = _dbContext.Products.Where(product => (name == null ? (true) : (product.Description.Contains(name)))
+              && ((priceFrom == null) ? (true) : (product.Price >= priceFrom))
+              && ((priceTo == null) ? (true) : (product.Price <= priceTo)))
+             /* && (categoryId == null) ? (true) : (categoryId.Contains(product.Category)))*/
+                .OrderBy(product => orderBy);
+            Console.WriteLine(qurey);
+           
+            List<Product> products =  qurey.ToList();
+            return products.ToArray();
         }
 
 
