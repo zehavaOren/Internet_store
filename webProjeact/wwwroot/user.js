@@ -15,12 +15,12 @@ async function update() {
         "lastName": goodUser.lastName,
         "email": goodUser.email
     }
-    const goodUser = JSON.stringify(newUser);
+    const jsonUser = JSON.stringify(newUser);
     const res = await fetch("https://localhost:44319/Api/User",
         {
             headers: { "content-type": "application/json" },
             method: 'PUT',
-            body: goodUser
+            body: jsonUser
         });
 
     if (!res.ok) {
