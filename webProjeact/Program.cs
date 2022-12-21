@@ -21,7 +21,7 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 
 
-builder.Services.AddDbContext<web_dbContext>(option => option.UseSqlServer("Data Source = DESKTOP-HFEU4N8\\SQLEXPRESS; Initial Catalog=web_db;Integrated Security=True;Pooling=False"));//data source=home 
+builder.Services.AddDbContext<web_dbContext>(option => option.UseSqlServer(@"Data Source = DESKTOP-QBHR7E5; Initial Catalog=web_db;Integrated Security=True;Pooling=False"));//data source=home 
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

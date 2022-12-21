@@ -19,20 +19,20 @@ namespace webProjeact.Controllers
         }
         // GET: api/<ProductController>
         [HttpGet]
-        /*  async public Task<Product[]> Get()
+          async public Task<Product[]> Get()
           {
              Product []products=await _ProductServ.getAllProducts();
               return products;
           }
-         */
+         
 
         // GET api/<ProductController>/5
-        [HttpGet]
+    /*    [HttpGet]
         public async Task<Product[]> Get(int[]? categoryId, string? description, int? priceFrom, int? priceTo, int? start, int? limit, string? orderBy, string? direction)
         {
             Product[] products = await _ProductServ.Get(categoryId, description, priceFrom, priceTo, start, limit, orderBy, direction);
             return products;
-        }
+        }*/
       
     }
 }

@@ -23,7 +23,7 @@ namespace webProjeact.Controllers
         async public Task<ActionResult> Post([FromBody] Order order)
         {
 
-            _OrderServ.AddOrder(order);
+            await _OrderServ.AddOrder(order);
             return Ok();
         }
 
