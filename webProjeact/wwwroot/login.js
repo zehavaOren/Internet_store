@@ -12,7 +12,7 @@ function cambiar_login() {
   setTimeout(function(){    
   document.querySelector('.cont_form_sign_up').style.display = "none";
   },200);  
-  enter();
+ 
     }
   
   function cambiar_sign_up(at) {
@@ -25,7 +25,6 @@ function cambiar_login() {
   
   setTimeout(function(){   document.querySelector('.cont_form_login').style.display = "none";
   },400);  
-  signIn()
   
   
   }    

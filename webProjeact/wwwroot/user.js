@@ -2,7 +2,9 @@
 
 async function update() {
     let thisUser = sessionStorage.getItem('details');
+    console.log(thisUser);
     let goodUser = JSON.parse(thisUser);
+    console.log(goodUser);
 
     /*const email = window.document.getElementById("email").value;
     const firstName = window.document.getElementById("fName").value;

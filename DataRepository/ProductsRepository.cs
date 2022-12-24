@@ -26,9 +26,8 @@ namespace DataRepository
         {
             var qurey = _dbContext.Products.Where(product => (name == null ? (true) : (product.Description.Contains(name)))
               && ((priceFrom == null) ? (true) : (product.Price >= priceFrom))
-              && ((priceTo == null) ? (true) : (product.Price <= priceTo)))
-             /* && (categoryId == null) ? (true) : (categoryId.Contains(product.Category)))*/
-                .OrderBy(product => orderBy);
+              && (categoryId.Length == 0) ? (true) : (categoryId.Contains(product.Category))
+              && ((priceTo == null) ? (true) : (product.Price <= priceTo))).OrderBy(product => orderBy);
             Console.WriteLine(qurey);
            
             List<Product> products =  qurey.ToList();
