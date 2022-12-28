@@ -1,4 +1,5 @@
 ﻿var productArry = [];
+ var count = 0;
 load = () => {
     loadProducts();
     loadCategories();
@@ -159,8 +160,12 @@ addToCart = (id) => {
     for (var i = 0; i < products.length; i++) {
         if (products[i].id == id) {
             productArry.push(products[i]);
+            count = count + 1;
+            document.getElementById("ItemsCountText").innerHTML = count;
             sessionStorage.setItem("cart", JSON.stringify(productArry));
-         <!--   Document.getElementById("#ItemsCountText").innerText+=1;-->
+           
+
+
             break;
         }
 
