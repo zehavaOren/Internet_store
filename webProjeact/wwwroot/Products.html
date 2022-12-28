@@ -16,14 +16,14 @@
             <h1></h1>
             <p class="price"></p>
             <p class="description"></p>
-            <p><button>הוסף לסל</button></p>
+            <p><button onclick="addToCart(this.value)" value="">הוסף לסל</button></p>
         </div>
     </template>
 
     <template id="temp-category">
         <div class="cb checkbox">
-            <input type="checkbox" class="opt" id="" value="">
-            <label for="">
+            <input type="checkbox" class="opt" id="checkId" value="" onclick="filterProducts()">
+            <label for="checkId">
                 <span class="OptionName"></span>
                 <span class="Count"></span>
                 </a>
@@ -54,7 +54,7 @@
                 <a href="shoppingbag.html">
                     <div class="Icon">
                         <div class="ItemCount">
-                            <span id="ItemsCountText">0</span>
+                            <span id="ItemsCountText">0 </span>
                         </div>
                     </div>
 
