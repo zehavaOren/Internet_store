@@ -40,9 +40,9 @@ namespace WebApplication1.Controllers
         }
         
         [HttpPut("{id}")]
-        async public Task<User> Put(int id, [FromBody] User Users)
+        async public Task<User> Put( [FromBody] User Users)
         {
-            await _UsersServ.Put(id, Users);
+            await _UsersServ.Put(Users.Id, Users);
             return Users;
         }
 
