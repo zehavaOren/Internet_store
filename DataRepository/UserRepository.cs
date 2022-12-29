@@ -40,17 +40,22 @@ namespace DataRepository
             return user;
         }
 
-        async public Task<User> Put(int id, User user)
+        public async Task updateUser(int userId, User newUser)
         {
-            User userToUpdate = await _dbContext.Users.FindAsync(id);
-            if (userToUpdate == null)
-            {
-                return null;
-            }
-            _dbContext.Entry(userToUpdate).CurrentValues.SetValues(user);
+            _dbContext.Users.Update(newUser);
             await _dbContext.SaveChangesAsync();
-            return user;
         }
+        /* async public Task<User> Put(int id, User user)
+         {
+             User userToUpdate = await _dbContext.Users.FindAsync(id);
+             if (userToUpdate == null)
+             {
+                 return null;
+             }
+             _dbContext.Entry(userToUpdate).CurrentValues.SetValues(user);
+             await _dbContext.SaveChangesAsync();
+             return user;
+         }*/
 
 
     }

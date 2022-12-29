@@ -30,7 +30,7 @@
     if (!res.ok) {
         alert("please try again");
 
-        if (res.status == 204) {
+        if (res.status == 204) { 
             alert("no data");
             return;
         }

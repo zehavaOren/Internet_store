@@ -34,7 +34,7 @@ namespace Service
 
         async public Task Put(int id, User user)
         {
-            await _Usersrep.Put(id, user);
+            await _Usersrep.updateUser(id, user);
             return;
         }
 

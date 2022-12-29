@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text.Json;
@@ -16,9 +17,14 @@ namespace DataRepository
         public async Task<Category[]> GetAllCategories()
 
         {
-            var list = (from Categories in _dbContext.Categories
-                        select Categories).ToArray<Category>();
-            return list;
+
+           /* var list = (from Categories in _dbContext.Categories
+                        select Categories).ToArray<Category>();*/
+            List<Category> Categorys = await _dbContext.Categories
+               .Include(category => category.Products).ToListAsync();
+
+
+            return Categorys.ToArray();
 
         }
 

@@ -74,6 +74,9 @@ fullProductsInCategory = (data) => {
     }
     console.log(data);
 }
+
+
+
 showProducts = (data) => {
     document.getElementById("counter").innerText = data.length;
     for (var i = 0; i < data.length; i++) {
@@ -155,21 +158,24 @@ deleteItem = () => {
 }
 
 addToCart = (id) => {
-    var products1 = sessionStorage.getItem("products");
-    var products = JSON.parse(products1);
-    for (var i = 0; i < products.length; i++) {
-        if (products[i].id == id) {
-            productArry.push(products[i]);
-            count = count + 1;
-            document.getElementById("ItemsCountText").innerHTML = count;
-            sessionStorage.setItem("cart", JSON.stringify(productArry));
-           
+    addToCart = (id) => {
+        var products1 = sessionStorage.getItem("cart");
+        var products = JSON.parse(products1);
+        count = products.length;
+        const data = sessionStorage.getItem("products");
+        const goodData = JSON.parse(data);
+        for (var i = 0; i < goodData.length; i++) {
+            if (goodData[i].id == id) {
+                poductsArray.push(goodData[i]);
+                products.push(goodData[i])
 
-
-            break;
+            }
         }
+        sessionStorage.setItem("cart", JSON.stringify(products));
+        document.getElementById("ItemsCountText").innerHTML = count + 1;
+        count = count + 1;
 
-    }
+
 }
 document.addEventListener("load", load());
 

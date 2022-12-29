@@ -1,21 +1,37 @@
 ﻿load = () => {
     const products1 = sessionStorage.getItem("cart");
     const products = JSON.parse(products1);
-  /*  showCart(products);*/
+   showCarts(products);
 }
-/*showCart = (product) => {
+showCarts = (products) => {
+    var count= 0;
+    for (var i = 0; i < products.length; i++) {
+        count += products[i].price;
 
+        showCart(products[i]);
+    }
+    document.getElementById("totalAmount").innerHTML = count;
+    document.getElementById("itemCount").innerHTML = products.length;
+}
+showCart = (productCart) => {
 
+    console.log(productCart)
     var temp = document.getElementById("temp-row");
     var clone = temp.content.cloneNode(true);
+    console.log(productCart.name);
+    console.log(productCart.id);
+    let stringImag = "./img/" + productCart.imgUrl;
+    console.log(stringImag);
+    clone.querySelector(".image").style.backgroundImage = `url(${stringImag})`;
+    clone.querySelector(".itemName").innerText = productCart.name;
+    clone.querySelector(".itemNumber").innerText = 1;
+    clone.querySelector(".price").innerText = productCart.price;
+    document.getElementsByTagName("tbody")[0].appendChild(clone);
 
-    clone.querySelector(".imageColumn").src =`/img/${product.imgUrl}`;
-    clone.querySelector(".descriptionColumn").innerText = product.description;
-    clone.querySelector(".itemName").innerText = product.name;
-    clone.querySelector(".price").src = product.price;
-    document.getElementById(".itemsColumn").appendChild(clone);
+   
 
-}*/
+
+}
 placeOrder =async () => {
     console.log("vghv");
     var products1 = sessionStorage.getItem("cart");
@@ -66,4 +82,3 @@ placeOrder =async () => {
 
 }
 
-document.addEventListener("load",load());
