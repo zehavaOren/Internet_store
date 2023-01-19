@@ -176,6 +176,7 @@ addToCart = (id) => {
         count = count + 1;
 
 
+    }
 }
 document.addEventListener("load", load());
 
