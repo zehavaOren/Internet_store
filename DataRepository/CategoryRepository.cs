@@ -17,9 +17,20 @@ namespace DataRepository
         public async Task<IEnumerable<Category?>> GetAllCategories()
 
         {
+<<<<<<< HEAD
             var list = (from Categories in _dbContext.Categories
                         select Categories).Include(category => category.Products).ToList();
             return list;
+=======
+
+           /* var list = (from Categories in _dbContext.Categories
+                        select Categories).ToArray<Category>();*/
+            List<Category> Categorys = await _dbContext.Categories
+               .Include(category => category.Products).ToListAsync();
+
+
+            return Categorys.ToArray();
+>>>>>>> c6efb4aa2fc06c8706859400b6eb2677bfc8a4a7
 
         }
 

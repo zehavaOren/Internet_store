@@ -22,7 +22,7 @@ namespace DataRepository
         public async Task<Product[]> Get(int[]? categoryId, string? name, int? priceFrom, int? priceTo, int? start, int? limit, string? orderBy = "name", string? direction = "desc")
 
         {
-            var qurey = _dbContext.Products.Where(product => (name == null ? (true) : (product.Description.Contains(name)))
+            var qurey = _dbContext.Products.Where(product => (name == null ? (true) : (product.Name.Contains(name)))
               && ((priceFrom == null) ? (true) : (product.Price >= priceFrom))
               && ((categoryId.Length == 0) ? (true) : (categoryId.Contains(product.Category)))
               && ((priceTo == null) ? (true) : (product.Price <= priceTo))).OrderBy(product => orderBy).Include(p => p.CategoryNavigation).ToArray();

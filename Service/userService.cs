@@ -26,7 +26,11 @@ namespace Service
 
         async public Task UpdateUser(int id, User user)
         {
+<<<<<<< HEAD
             await _Usersrep.UpdateUser(id, user);
+=======
+            await _Usersrep.updateUser(id, user);
+>>>>>>> c6efb4aa2fc06c8706859400b6eb2677bfc8a4a7
             return;
         }
 

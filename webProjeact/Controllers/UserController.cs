@@ -61,7 +61,19 @@ namespace WebApplication1.Controllers
         }
         
         [HttpPut("{id}")]
+<<<<<<< HEAD
         async public Task<UserSaveDTO> Put(int id,[FromBody] UserDTO User)
+=======
+        async public Task<User> Put( [FromBody] User Users)
+        {
+            await _UsersServ.Put(Users.Id, Users);
+            return Users;
+        }
+
+        // DELETE api/<Users>/5
+        [HttpDelete("{id}")]
+        async public Task Delete(int id)
+>>>>>>> c6efb4aa2fc06c8706859400b6eb2677bfc8a4a7
         {
             var resMap = _mapper.Map<UserDTO, User>(User);
             await _UsersServ.UpdateUser(id,resMap);
