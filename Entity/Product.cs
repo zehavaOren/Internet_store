@@ -17,7 +17,7 @@ namespace Entity
         public int Price { get; set; }
         public int Category { get; set; }
         public string ImgUrl { get; set; } = null!;
-        [JsonIgnore]
+
         public virtual Category? CategoryNavigation { get; set; } = null!;
         public virtual ICollection<OrderItem> OrderItems { get; set; }
     }

@@ -1,8 +1,9 @@
-﻿using Entity;
+﻿using AutoMapper;
+using DTO;
+using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Service;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace webProjeact.Controllers
 {
@@ -11,17 +12,22 @@ namespace webProjeact.Controllers
     public class CategoriesController : ControllerBase
     {
 
-        private readonly ICategoryService _CategoryServ;
+        private readonly ICategoryService _CategoryService;
+        private readonly IMapper _mapper;
 
-        public CategoriesController(ICategoryService CategoryServ)
+
+        public CategoriesController(ICategoryService CategoryService, IMapper mapper)
         {
-            _CategoryServ = CategoryServ;
+            _CategoryService = CategoryService;
+            _mapper = mapper;
         }
         [HttpGet]
-        public async Task<Category[]> Get()
+        public async Task<IEnumerable<CategoryDTO>> Get()
         {
-            return await _CategoryServ.getAllCategories();
+            var categories= await _CategoryService.getAllCategories();
+            var res = _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryDTO>>(categories);
+            return res;
         }
-
+        
     }
 }

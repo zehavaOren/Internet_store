@@ -10,9 +10,7 @@ namespace Entity
         public int Orderid { get; set; }
         public int Productid { get; set; }
         public int Quentity { get; set; }
-        [JsonIgnore]
         public virtual Order? Order { get; set; } = null!;
-        [JsonIgnore]
         public virtual Product? Product { get; set; } = null!;
     }
 }

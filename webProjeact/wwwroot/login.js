@@ -1,6 +1,4 @@
-/* ------------------------------------ Click on login and Sign Up to  changue and view the effect
----------------------------------------
-*/
+var psd =0;
 
 function cambiar_login() {
   document.querySelector('.cont_forms').className = "cont_forms cont_forms_active_login";  
@@ -15,7 +13,7 @@ function cambiar_login() {
  
     }
   
-  function cambiar_sign_up(at) {
+function cambiar_sign_up(at) {
     document.querySelector('.cont_forms').className = "cont_forms cont_forms_active_sign_up";
     document.querySelector('.cont_form_sign_up').style.display = "block";
   document.querySelector('.cont_form_login').style.opacity = "0";
@@ -27,11 +25,9 @@ function cambiar_login() {
   },400);  
   
   
-  }    
+  }      
   
-  
-  
-  function ocultar_login_sign_up() {
+function ocultar_login_sign_up() {
   
   document.querySelector('.cont_forms').className = "cont_forms";  
   document.querySelector('.cont_form_sign_up').style.opacity = "0";               
@@ -42,11 +38,10 @@ function cambiar_login() {
   document.querySelector('.cont_form_login').style.display = "none";
   },500);  
     
-    }
+    } 
   
-  
-  
-    async function enter ()  {
+async function enter() {
+   
       const user = window.document.getElementById("user").value;
       const pass = window.document.getElementById("pass").value;
   
@@ -55,22 +50,36 @@ function cambiar_login() {
       if (!res.ok) {
           alert("please try again");
           return;
-  //        localStorage.setItem('thisUser', JSON.stringify(gooddata2));
-  //        window.location.href = "user.html";
+
       }
       if (res.status == 204) {
           alert("no data");
           return;
-      }
-      const gooddata = await res.json();
-           alert(`welcome ${gooddata.firstName}`);
-           sessionStorage.setItem('details', JSON.stringify(gooddata))
-          // localStorage.setItem('thisUser', JSON.stringify(gooddata));
-           window.location.href = "menu.html";
-  
+        }
+        var gooddata = await res.json();
+        alert(`welcome ${gooddata.firstName}`);
+        const data = {
+            "gooddata": gooddata,
+            "password":pass
+        }
+        sessionStorage.setItem('details', JSON.stringify(data))
+        window.location.href = "menu.html";
       return;
-  }
-  async function signIn() {
+}
+
+async function signIn() {
+    if (!validate()) {
+        return;
+    }
+    if (this.psd ==0 ) {
+        alert("the password isn't checked, please check it");
+        return;
+    }
+    if (this.psd < 3) {
+        alert("the password isn't strong please enter new password");
+        return;
+    }
+
 
     const email = window.document.getElementById("email").value;
     const firstName = window.document.getElementById("fName").value;
@@ -84,7 +93,7 @@ function cambiar_login() {
         "email": email
     };
 
-    const res = await fetch('https://localhost:44319/api/User',
+      const res = await fetch('https://localhost:44319/api/User',
         {
             headers: { "Content-Type": "application/json" },
             method: 'POST',
@@ -94,25 +103,17 @@ function cambiar_login() {
     if (!res.ok) {
         alert("please try again");
     }
-    if (res.status == 204) {
-        alert("no data");
-        return;
-    }
-    //if (res.status == 400) {
-    //    alert(res.title)
-  //  }
-    //console.log(res.title);
-    // console.log(ValidityState);
-    console.log(res);
-    if (res.status == 201) { 
-    const gooddata = await res.json();
-    alert(`welcome ${gooddata.firstName}`);
+   
+    else  { 
+        alert(`welcome ${firstName}`);
+        window.location.href = "login.html";
     }
     return;
 }
+
 async function check() {
 
-  const password = window.document.getElementById("password").value;
+    password = window.document.getElementById("password").value;
     
     const res = await fetch('https://localhost:44319/api/Password',
         {
@@ -120,9 +121,57 @@ async function check() {
             method: 'POST',
             body: JSON.stringify(password)
         })
-  //alert(res);
-  const data = await res.json
-  alert(data);
-    window.document.getElementById("res").value = res;
-    return;
+    if (res.ok) {
+        let data = await res.json();
+        this.psd = data;
+        alert(data);
+    }
+    else {
+        alert("the password isn't strong' please enter new password");
+    }
+ 
+   
+}
+
+function validate ()  {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var firstName = document.getElementById("fName").value;
+    var lastName = document.getElementById("lName").value;
+    var error_message = document.getElementById("error_message");
+    var text;
+    if (email == "") {
+        text = "Please Enter Email";
+        error_message.innerHTML = text;
+        return false;
+    }
+    
+    if (firstName == "") {
+        text = "Please Enter first name";
+        error_message.innerHTML = text;
+        return false;
+    }
+    if (firstName.length < 5) {
+        text = "Your first name too short";
+        error_message.innerHTML = text;
+        return false;
+    }
+    if (lastName == "") {
+        text = "Please Enter last name";
+        error_message.innerHTML = text;
+        return false;
+    }
+    if (lastName.length < 5) {
+        text = "Your last name too short";
+        error_message.innerHTML = text;
+        return false;
+    }
+    if (password == "") {
+        text = "Please Enter password";
+        error_message.innerHTML = text;
+        return false;
+    }
+    
+
+    return true;
 }

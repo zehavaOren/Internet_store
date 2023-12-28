@@ -2,6 +2,9 @@
 using System.Text.Json;
 using Service;
 using Entity;
+using Microsoft.Extensions.Logging;
+using AutoMapper;
+using DTO;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,41 +18,55 @@ namespace WebApplication1.Controllers
     public class UserController : ControllerBase
     {
         private readonly IuserService _UsersServ;
+        private readonly ILogger<UserController> _logger;
+        private readonly IMapper _mapper;
 
-        public UserController(IuserService UsersServ)
+        public UserController(IuserService UsersServ, ILogger<UserController> logger, IMapper mapper)
         {
             _UsersServ = UsersServ;
+            _logger = logger;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        async public Task<ActionResult<IEnumerable<User>>> Get([FromQuery] string email, [FromQuery] string password)
+        async public Task<ActionResult<UserSaveDTO>> Get([FromQuery] string email, [FromQuery] string password)
         {
-            if (await _UsersServ.Get(email, password) != null)
-                return Ok(await _UsersServ.Get(email, password));
+           
+
+            _logger.LogInformation("user email " + email);
+            try
+            {
+                User user = await _UsersServ.GetUser(email, password);
+                UserSaveDTO res = _mapper.Map<User, UserSaveDTO>(user);
+                return res;
+            }
+            catch(Exception e)
+            {
+                _logger.LogError("error", e.Message, e.StackTrace);
+                return NotFound();
+            }
             return NotFound();
         }
 
 
-        // POST api/<Users>
         [HttpPost]
 
-        async public Task<ActionResult<User>> Post([FromBody] User Users)
+        async public Task<ActionResult<UserSaveDTO>> Post([FromBody] UserDTO User)
         {
-            User u = await _UsersServ.Post(Users);
-            return u;
+            
+            var resMap = _mapper.Map<UserDTO, User>(User);
+            User userRes = await _UsersServ.Post(resMap);
+            var UserAfter = _mapper.Map<User, UserSaveDTO> (userRes);
+            return Ok(UserAfter);
         }
         
         [HttpPut("{id}")]
-        async public Task<User> Put(int id, [FromBody] User Users)
+        async public Task<UserSaveDTO> Put(int id,[FromBody] UserDTO User)
         {
-            await _UsersServ.Put(id, Users);
-            return Users;
-        }
-
-        // DELETE api/<Users>/5
-        [HttpDelete("{id}")]
-        async public Task Delete(int id)
-        {
+            var resMap = _mapper.Map<UserDTO, User>(User);
+            await _UsersServ.UpdateUser(id,resMap);
+            var UserAfter = _mapper.Map<User, UserSaveDTO>(resMap);
+            return UserAfter;
         }
 
 

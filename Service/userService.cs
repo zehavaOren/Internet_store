@@ -11,30 +11,22 @@ namespace Service
         public UsersService(IUserRepository Usersrep)
         {
             _Usersrep = Usersrep;
-        }
+        }  
 
-        async public Task<User> Get(int id)
+        async public Task<User?> GetUser(string email, string password)
         {
-            return await _Usersrep.Get(id);
-        }
-
-        async public Task<User> Get(string email, string password)
-        {
-            User user= await _Usersrep.Get(email, password);
-           /* if (user == null)
-                return null;
-            else*/
+            User user= await _Usersrep.GetUser(email, password);
                 return user;
         }
         async public Task<User> Post(User user)
         {
-            User newUser= await _Usersrep.Post(user);
+            User newUser= await _Usersrep.AddUser(user);
             return newUser;
         }
 
-        async public Task Put(int id, User user)
+        async public Task UpdateUser(int id, User user)
         {
-            await _Usersrep.Put(id, user);
+            await _Usersrep.UpdateUser(id, user);
             return;
         }
 

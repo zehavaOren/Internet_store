@@ -12,18 +12,11 @@ namespace Service
         {
             _Categoryrepository = Categoryrep;
         }
-
-        async public Task<Category[]> getAllCategories()
+        //
+        async public Task<IEnumerable<Category?>> getAllCategories()
         {
-            return await _Categoryrepository.GetAllCategories();
-        }
-
-       /* public async Task<Category[]> Get(int[]? categoriesIds)
-        {
-            Category []res = await _Categoryrepository.Get(categoriesIds);
+            var res= await _Categoryrepository.GetAllCategories();
             return res;
-        }*/
-
-
+        }
     }
 }

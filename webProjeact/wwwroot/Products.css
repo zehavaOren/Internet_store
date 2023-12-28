@@ -11,6 +11,7 @@
 
 ul {
     margin: 0;
+    list-style-type:none;
 }
 
 .floatRight {
@@ -51,15 +52,16 @@ p.description {
 }
 
 .bar::before {
-    content: 'חנות המתנות שלי';
+    content: 'Gift for everyone';
     color: white;
     /* display: inline-block; */
     position: absolute;
     /* margin: 0 auto; */
     /* display: block; */
-    top: 8px;
+    top: 10px;
     left: 51%;
     font-family: Helvetica;
+    font-size: 25px
 }
 
 .price {
@@ -72,7 +74,7 @@ p.description {
     outline: 0;
     padding: 12px;
     color: white;
-    background-color: #000;
+    background-color: #611c4e;
     text-align: center;
     cursor: pointer;
     width: 100%;
@@ -81,18 +83,19 @@ p.description {
 
     .card button:hover {
         opacity: 0.7;
+        font-size:20px;
     }
 
 .bar {
-    background-color: black;
-    height: 35px;
+    background-color: #4d144e;
+    height: 50px;
 }
 
 .Icon {
     background-image: url(../Images/BagActive.png);
     background-repeat: no-repeat;
     padding: 9px 2px 2px 2px;
-    color: #4f8855;
+    color: #4d144e;
     float: right;
     margin: 1px 0 0 0;
     width: 24px;
@@ -102,6 +105,7 @@ p.description {
 .BagSummary .Icon .ItemCount {
     overflow: hidden;
     height: 16px;
+    color:white;
 }
 
     .BagSummary .Icon .ItemCount span {
@@ -110,10 +114,11 @@ p.description {
         display: block;
         font-size: 100%;
         margin-top: -1px;
+        color: white;
     }
 
 .goToCart {
-    background: #1a6461;
+    background: #f7971e;
     font-size: 11px;
     color: #fff;
     padding-bottom: 7px;
@@ -157,6 +162,7 @@ p.description {
 
 .QuickLinks ul li {
     float: left;
+    margin-top:15px;
 }
 
 
@@ -169,7 +175,7 @@ p.description {
     padding-bottom: 10px;
     position: absolute;
     z-index: 102;
-    background-color: rgb(249, 249, 249);
+    background-color: rgb(247,151,30,0.5);
     font-family: Arial;
     font-size: 14px;
     min-height: 100%;
@@ -225,3 +231,13 @@ p.description {
         .pagination a:hover:not(.active) {
             background-color: #ddd;
         }
+.addToCart {
+    background: linear-gradient(currentColor 0 0) 100% 0, linear-gradient(currentColor 0 0) 0 0, linear-gradient(currentColor 0 0) 0 100%, linear-gradient(currentColor 0 0) 100% 100%;
+    background-size: var(--d, 0) 3px, 3px var(--d, 0);
+    background-repeat: no-repeat;
+    transition: 0.5s;
+}
+
+.addToCart:hover {
+       
+}

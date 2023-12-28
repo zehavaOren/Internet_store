@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text.Json;
@@ -13,36 +14,14 @@ namespace DataRepository
             _dbContext = dbContext;
         }
 
-        public async Task<Category[]> GetAllCategories()
+        public async Task<IEnumerable<Category?>> GetAllCategories()
 
         {
             var list = (from Categories in _dbContext.Categories
-                        select Categories).ToArray<Category>();
+                        select Categories).Include(category => category.Products).ToList();
             return list;
 
         }
-
-
-
- //       async public Task<Category[]> Get(int[]? categoriesIds)
- //       {
- //           /*  int i=0;
- //            Category[] list=new Category[categoriesIds.Length];
- //             while (categoriesIds[i] != null)
- //             {
- //                 list= (from Category in _dbContext.Categories
- //                          where categoriesIds[i] == Category.Id
- //                          select Category).ToArray();
- //                 i++;
- //             }
- //            return list;
- //*/
-
- //           var list = (from Category in _dbContext.Categories
- //                   where categoriesIds[0] == Category.Id
- //                   select Category).ToArray();
- //           return list;
- //       }
 
     }
 }

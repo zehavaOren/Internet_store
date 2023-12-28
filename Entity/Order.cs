@@ -15,7 +15,6 @@ namespace Entity
         public int UserId { get; set; }
         public int Price { get; set; }
         public DateTime Date { get; set; }
-        [JsonIgnore]
         public virtual User? User { get; set; } = null!;
         public virtual ICollection<OrderItem> OrderItems { get; set; }
     }

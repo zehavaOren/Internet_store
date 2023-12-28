@@ -4,6 +4,6 @@ namespace Service
 {
     public interface IPasswordService
     {
-        Task<int> Post(string password);
+        Task<int> ChekPaswword(string password);
     }
 }

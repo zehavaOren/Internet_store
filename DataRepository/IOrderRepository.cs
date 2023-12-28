@@ -4,6 +4,6 @@ namespace DataRepository
 {
     public interface IOrderRepository
     {
-         Task AddOrder(Order order);
+        Task<Order> AddOrder(Order order);
     }
 }

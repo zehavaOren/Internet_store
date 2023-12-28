@@ -13,7 +13,7 @@ namespace Service
             _userrep = userrep;
         }
 
-        async public Task<int> Post(string password)
+        async public Task<int> ChekPaswword(string password)
         {
             Result result = Zxcvbn.Core.EvaluatePassword(password);
             return result.Score;

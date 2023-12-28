@@ -5,6 +5,6 @@ namespace Service
     public interface ICategoryService
     {
         /*Task<Category[]> Get(int[]? categoriesIds);*/
-        Task<Category[]> getAllCategories();
+        Task<IEnumerable<Category?>> getAllCategories();
     }
 }

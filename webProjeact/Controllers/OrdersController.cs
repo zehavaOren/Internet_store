@@ -1,8 +1,9 @@
-﻿using Entity;
+﻿using AutoMapper;
+using DTO;
+using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Service;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace webProjeact.Controllers
 {
@@ -11,23 +12,29 @@ namespace webProjeact.Controllers
     public class OrdersController : ControllerBase
     {
 
-        private readonly IOrderService _OrderServ;
+        private readonly IOrderService _OrderService;
+        private readonly IProductsService _productsService;
+        private readonly IMapper _mapper;
+        private readonly ILogger<OrdersController> _logger;
 
-        public OrdersController(IOrderService CategoryServ)
+
+        public OrdersController(IOrderService OrderService, IMapper mapper, ILogger<OrdersController> logger, IProductsService productService)
         {
-            _OrderServ = CategoryServ;
+            _OrderService = OrderService;
+            _mapper = mapper;
+            _logger = logger;
+            _productsService= productService;
+
         }
-      
 
         [HttpPost]
-        async public Task<ActionResult> Post([FromBody] Order order)
+        async public Task<ActionResult> Post([FromBody] OrderDTO order)
         {
-
-            await _OrderServ.AddOrder(order);
+            var OrderMap= _mapper.Map<OrderDTO ,Order>(order);
+            await _OrderService.AddOrder(OrderMap);
             return Ok();
+            
         }
-
-
 
     }
 }

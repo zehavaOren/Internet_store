@@ -10,19 +10,21 @@
                   text-align: center;
                   font-family: "Open Sans", sans-serif;
               }
+        body {
+            background-color: #c74a4b;
+        }
 
-              .cotn_principal {
-                  position: absolute;
-                  width: 100%;
-                  display: flex;
-                  height: 100%;
-                  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cfd8dc+0,607d8b+100,b0bec5+100 */
-                  background: #cfd8dc; /* Old browsers */
-                  background: -moz-linear-gradient( -45deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100% ); /* FF3.6-15 */
-                  background: -webkit-linear-gradient( -45deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100% ); /* Chrome10-25,Safari5.1-6 */
-                  background: linear-gradient( 135deg, #cfd8dc 0%, #607d8b 100%, #b0bec5 100% ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfd8dc', endColorstr='#b0bec5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-              }
+        .cotn_principal {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            height: 100%;
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cfd8dc+0,607d8b+100,b0bec5+100 */
+            background: #f7971e; /* fallback for old browsers */
+            background: -webkit-linear-gradient( to right, #ffd200, #f7971e ); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient( to right, #ffd200, #f7971e ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+           
+        }
 
               .cont_centrar {
                   display: flex;
@@ -39,7 +41,7 @@
                   position: relative;
                   float: left;
                   width: 640px;
-                  height: 280px;
+                  height: 421px;
                   overflow: hidden;
                   background-color: #fff;
                   box-shadow: 1px 10px 30px -10px rgba(0, 0, 0, 0.5);
@@ -51,7 +53,7 @@
                   top: 0px;
                   left: 0px;
                   width: 320px;
-                  height: 280px;
+                  height: 420px;
                   background-color: #eee;
                   -webkit-transition: all 0.5s;
                   -moz-transition: all 0.5s;
@@ -62,7 +64,7 @@
 
               .cont_forms_active_login {
                   box-shadow: 1px 10px 30px -10px rgba(0, 0, 0, 0.5);
-                  height: 420px;
+                  height: 480px;
                   top: -60px;
                   left: 0px;
                   -webkit-transition: all 0.5s;
@@ -72,17 +74,17 @@
                   transition: all 0.5s;
               }
 
-              .cont_forms_active_sign_up {
-                  box-shadow: 1px 10px 30px -10px rgba(0, 0, 0, 0.5);
-                  height: 420px;
-                  top: -60px;
-                  left: 320px;
-                  -webkit-transition: all 0.5s;
-                  -moz-transition: all 0.5s;
-                  -ms-transition: all 0.5s;
-                  -o-transition: all 0.5s;
-                  transition: all 0.5s;
-              }
+        .cont_forms_active_sign_up {
+            box-shadow: 1px 10px 30px -10px rgba(0, 0, 0, 0.5);
+            height: 480px;
+            top: -60px;
+            left: 320px;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+        }
 
               .cont_img_back_grey {
                   position: absolute;
@@ -142,7 +144,7 @@
               .cont_info_log_sign_up {
                   position: absolute;
                   width: 640px;
-                  height: 280px;
+                  height: 433px;
                   top: 0px;
                   z-index: 1;
               }
@@ -203,7 +205,7 @@
                   background-color: rgba(120, 144, 156, 0.55);
                   width: 80%;
                   border-radius: 3px;
-                  margin-top: 60px;
+                  margin-top: 122px;
                   padding: 15px 0px;
               }
 
@@ -364,6 +366,16 @@
                   margin: 10px;
                   margin-left: 30px;
               }
+        #error_message {
+            background: #e6696d;
+            padding: 0px;
+            text-align: center;
+            font-size: 16px;
+            transition: all 0.5s ease;
+            font-family: "Open Sans", sans-serif;
+            border-radius: 25%;
+            width: 250px;
+        }
     </style>
 </head>
 <body dir="rtl">
@@ -397,14 +409,12 @@
 
                 <div class="cont_back_info">
                     <div class="cont_img_back_grey">
-                        <!-- <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" /> -->
                         <img src="./img/gift5.jpg">
                     </div>
 
                 </div>
                 <div class="cont_forms">
                     <div class="cont_img_back_">
-                        <!-- <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" /> -->
                         <img src="./img/gift5.jpg">
                     </div>
                     <div class="cont_form_login">
@@ -418,11 +428,12 @@
                     <div class="cont_form_sign_up">
                         <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
                         <h2>SIGN UP</h2>
+                        <div id="error_message"></div>
                         <input type="text" placeholder="Email" id="email" />
                         <input type="text" placeholder="User first name" id="fName" />
                         <input type="text" placeholder="User last name" id="lName" />
                         <input type="password" placeholder="Password" id="password" />
-                        <!-- <input type="password" placeholder="Confirm Password" /> -->
+                        <div id="res"></div>
                         </br>
                         <button class="btn_sign_up" onclick="check()">chek password</button>
                         </br>

@@ -18,20 +18,17 @@ namespace webProjeact.Controllers
             _passwordServ = PasswordServ;
         }
   
-
-        // POST api/<PasswordController>
         [HttpPost]
-        async public Task<int> post([FromBody] string password)
+        async public Task<ActionResult<int>> post([FromBody] string password)
         {
-           
-            return await _passwordServ.Post(password);
+            throw new Exception("ffffffffff");
+            int resPassword= await _passwordServ.ChekPaswword(password);
+            if (resPassword > 0)
+            {
+                return resPassword;
+            }
+            else
+                return BadRequest(resPassword);
         }
-
-      /*  [HttpPost]
-        public int Post([FromBody] string code)
-        {
-            Result result = Zxcvbn.Core.EvaluatePassword(code);
-            return result.Score;
-        }*/
     }
 }
